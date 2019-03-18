@@ -14,4 +14,12 @@
         android:text="Publish"
         tools:layout_editor_absoluteX="113dp"
         tools:layout_editor_absoluteY="251dp" />
+
+    <TextView
+        android:id="@+id/SubTExt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="455dp" />
 </android.support.constraint.ConstraintLayout>
