@@ -10,7 +10,7 @@ class MQTTClient:
         self.MQTT_broker = "io.adafruit.com"
         self.IO_USERNAME = "karinamg"
         self.IO_KEY = "d5165b2f551b4d23a0cc4a25edf1cced"
-        self.IO_TOPIC = "karinamg/feeds/test"
+        self.IO_TOPIC = "karinamg/feeds/commands"
 
         self.client = mqtt.Client("DodeFast")
         self.client.username_pw_set(self.IO_USERNAME, password=self.IO_KEY)
@@ -44,5 +44,4 @@ class MQTTClient:
 
 
 Client = MQTTClient()
-Client.publishMessage(["A", "AFD", "F"])
-#Client.publishMessage("Hello")
+Client.publishMessage(["A", "AFD", "F", "F"])
