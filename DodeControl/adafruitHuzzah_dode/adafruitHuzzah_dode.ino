@@ -187,7 +187,7 @@ int receiveCommand() {
     }
     else if(subscription == &tCommands){
       Serial.print(F("Got: "));
-      char* commands = (char*)tCommands.lastread
+      char* commands = (char*)tCommands.lastread;
       publishAvailabilityStatus(false);
        int i = 0;
     std::string commmand;

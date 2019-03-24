@@ -44,4 +44,4 @@ class MQTTClient:
 
 
 Client = MQTTClient()
-Client.publishMessage(["AF", "AF", "F", "F"])
+Client.publishMessage(["AF", "F", "F_MOVE", "DFA", "IFA", "IFB", "A", "DAA", "IAA", "DAB", "IAB", "AA"])
