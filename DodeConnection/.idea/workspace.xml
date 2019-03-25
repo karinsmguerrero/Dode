@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d070e16-d699-47dd-9a3a-109b95bf15a6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../DodeClient/adafruitHuzzah_dode/adafruitHuzzah_dode/adafruitHuzzah_dode.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeClient/adafruitHuzzah_dode/adafruitHuzzah_dode/adafruitHuzzah_dode.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/MQTTClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/MQTTClient.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/androidTest/java/com/example/esp8266_arduinoclient/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/androidTest/java/com/example/esp8266_arduinoclient/ExampleInstrumentedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/java/com/example/esp8266_arduinoclient/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/java/com/example/esp8266_arduinoclient/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/app/src/test/java/com/example/esp8266_arduinoclient/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/app/src/test/java/com/example/esp8266_arduinoclient/ExampleUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DodeControl/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../DodeControl/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESP8266arduinoClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ESP8266arduinoClient/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +66,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="578" />
+    <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -208,7 +181,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="578" height="735" extended-state="0" />
+    <frame x="648" y="0" width="578" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.4962963" />

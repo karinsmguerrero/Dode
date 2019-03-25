@@ -63,19 +63,21 @@ Adafruit_MQTT_Publish tClientStatus = Adafruit_MQTT_Publish(&mqtt, CLIENTSTATUS_
 const char AVAILABILITY_FEED[] PROGMEM = USERNAME  PREAMBLE  "availability";
 Adafruit_MQTT_Publish tAvailability = Adafruit_MQTT_Publish(&mqtt, AVAILABILITY_FEED);
 
-int ONE[5] = {2,3,4,5,6};
-int TWO[5] = {1,3,9,6,10};
-int THREE[5] = {1,2,9,8,4};
-int FOUR[5] = {3,1,8,12,5};
-int FIVE[5] = {4,1,6,12,11};
-int SIX[5] = {1,2,5,10,11};
-int SEVEN[5] = {10,11,12,8,9};
-int EIGHT[5] = {9,3,4,7,12};
-int NINE[5] = {2,3,10,8,7};
-int TEN[5] = {2,6,9,11,7};
-int ELEVEN[5] = {12,5,7,10,6};
-int TWELVE[5] = {5,4,8,7,11};
-int current_face = 1;
+//Orden: {DFA, AF, IFA, IFB,DFB} 
+int ONE[5] = {6,5,4,3,2};
+int TWO[5] = {6,1,3,9,10};
+int THREE[5] = {8,9,2,1,4};
+int FOUR[5] = {8,3,1,5,12};
+int FIVE[5] = {4,1,6,11,12};
+int SIX[5] = {10,11,5,1,2};
+int SEVEN[5] = {10,9,8,12,11};
+int EIGHT[5] = {4,12,7,9,3};
+int NINE[5] = {8,7,10,2,3};
+int TEN[5] = {6,2,9,7,11};
+int ELEVEN[5] = {6,10,7,12,5};
+int TWELVE[5] = {11,7,8,4,5};
+
+int currentface = 1;
 
 int LED_ONE = 2;
 int LED_TWO = 3;
@@ -121,7 +123,6 @@ void setup() {
                */
 }
 
-//
 void loop() {
     yield();
     // Ensure the connection to the MQTT server is alive (this will make the first
@@ -151,7 +152,6 @@ void connectWLAN() {
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
 }
-
 
 void connectMQTT() {
     int8_t ret;
@@ -204,6 +204,43 @@ bool publishAvailabilityStatus(bool available) {
 }
 
 void AF(){
+  if(currentFace == 1){
+    currentFace = LED_ONE[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 2){
+    currentFace = LED_TWO[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 3){
+    currentFace = LED_THREE[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 4){
+    currentFace = LED_FOUR[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 5){
+    currentFace = LED_FIVE[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 6){
+    currentFace = LED_SIX[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 7){
+    currentFace = LED_SEVEN[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 8){
+    currentFace = LED_EIGHT[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 9){
+    currentFace = LED_NINE[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 10){
+    currentFace = LED_TEN[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 11){
+    currentFace = LED_ELEVEN[1];
+    //Move_motor(currentFace);
+  }else if(currentFace == 12){
+    currentFace = LED_TWELVE[1];
+    //Move_motor(currentFace);
+  }
     Serial.println("Move AF");/*
      digitalWrite(LED_ONE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
@@ -218,13 +255,87 @@ void F_MOVE(){
 }
 
 void DFA(){
-    Serial.println("Move DFA");
-    /*digitalWrite(LED_THREE, HIGH);   // turn the LED on (HIGH is the voltage level)
+    if(currentFace == 1){
+    currentFace = LED_ONE[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 2){
+    currentFace = LED_TWO[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 3){
+    currentFace = LED_THREE[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 4){
+    currentFace = LED_FOUR[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 5){
+    currentFace = LED_FIVE[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 6){
+    currentFace = LED_SIX[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 7){
+    currentFace = LED_SEVEN[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 8){
+    currentFace = LED_EIGHT[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 9){
+    currentFace = LED_NINE[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 10){
+    currentFace = LED_TEN[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 11){
+    currentFace = LED_ELEVEN[0];
+    //Move_motor(currentFace);
+  }else if(currentFace == 12){
+    currentFace = LED_TWELVE[0];
+    //Move_motor(currentFace);
+  }
+    Serial.println("Move DFA");/*
+    digitalWrite(LED_THREE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_THREE, LOW); */
 }
 
 void IFA(){
+    if(currentFace == 1){
+    currentFace = LED_ONE[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 2){
+    currentFace = LED_TWO[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 3){
+    currentFace = LED_THREE[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 4){
+    currentFace = LED_FOUR[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 5){
+    currentFace = LED_FIVE[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 6){
+    currentFace = LED_SIX[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 7){
+    currentFace = LED_SEVEN[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 8){
+    currentFace = LED_EIGHT[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 9){
+    currentFace = LED_NINE[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 10){
+    currentFace = LED_TEN[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 11){
+    currentFace = LED_ELEVEN[2];
+    //Move_motor(currentFace);
+  }else if(currentFace == 12){
+    currentFace = LED_TWELVE[2];
+    //Move_motor(currentFace);
+  }
     Serial.println("Move IFA");/*
     digitalWrite(LED_FOUR, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
@@ -233,6 +344,43 @@ void IFA(){
 }
 
 void DFB(){
+    if(currentFace == 1){
+    currentFace = LED_ONE[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 2){
+    currentFace = LED_TWO[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 3){
+    currentFace = LED_THREE[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 4){
+    currentFace = LED_FOUR[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 5){
+    currentFace = LED_FIVE[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 6){
+    currentFace = LED_SIX[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 7){
+    currentFace = LED_SEVEN[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 8){
+    currentFace = LED_EIGHT[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 9){
+    currentFace = LED_NINE[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 10){
+    currentFace = LED_TEN[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 11){
+    currentFace = LED_ELEVEN[4];
+    //Move_motor(currentFace);
+  }else if(currentFace == 12){
+    currentFace = LED_TWELVE[4];
+    //Move_motor(currentFace);
+  }
     Serial.println("Move DFB");/*
     digitalWrite(LED_FIVE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
@@ -240,55 +388,104 @@ void DFB(){
 }
 
 void IFB(){
+    if(currentFace == 1){
+    currentFace = LED_ONE[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 2){
+    currentFace = LED_TWO[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 3){
+    currentFace = LED_THREE[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 4){
+    currentFace = LED_FOUR[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 5){
+    currentFace = LED_FIVE[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 6){
+    currentFace = LED_SIX[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 7){
+    currentFace = LED_SEVEN[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 8){
+    currentFace = LED_EIGHT[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 9){
+    currentFace = LED_NINE[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 10){
+    currentFace = LED_TEN[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 11){
+    currentFace = LED_ELEVEN[3];
+    //Move_motor(currentFace);
+  }else if(currentFace == 12){
+    currentFace = LED_TWELVE[3];
+    //Move_motor(currentFace);
+  }
     Serial.println("Move IFB");/*
     digitalWrite(LED_SIX, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_SIX, LOW); */
 }
-
+//AF->IFA->AF
 void A(){
+  AF();
+  IFA();
+  AF();
     Serial.println("Move A");/*
     digitalWrite(LED_SEVEN, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_SEVEN, LOW); */
 }
-
+//AF->IFA
 void DAA(){
+  AF();
+  IFA();
     Serial.println("Move DAA");/*
     digitalWrite(LED_EIGHT, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_EIGHT, LOW); */
 }
-
+//AF->DFA
 void IAA(){
+  AF();
+  DFA();
     Serial.println("Move IAA");/*
     digitalWrite(LED_NINE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_NINE, LOW); */
 }
-
+//AF->IFA->IFA
 void DAB(){
+  AF();
+  IFA();
+  IFA();
     Serial.println("Move DAB");/*
     digitalWrite(LED_TEN, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_TEN, LOW); */
 }
-
+//DFB->DFB
 void IAB(){
+  DFB();
+  DFB();
     Serial.println("Move IAB");/*
     digitalWrite(LED_ELEVEN, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_ELEVEN, LOW); */
 }
-
+//DFB->AF
 void AA(){
+  DFB();
+  AF();
     Serial.println("Move AA");/*
     digitalWrite(LED_TWELVE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_ONE, LOW); */
 }
-
-
 
 int receiveCommand() {
     int clientSt = 99;
@@ -310,12 +507,6 @@ int receiveCommand() {
                 Serial.println("-----BEGIN COMMANDS-----");
                 i++;
                 while (c[i - 1] != ']') {
-                  /*if(c[i-1] == ']'){
-                    Serial.print("Found ]");
-                    
-                  }
-                  Serial.print("Reading COMMAND: ");
-                    Serial.println(c[i]);*/
                     if (c[i] == '\'') {
                       std::ostringstream os;
                       std::string str;
