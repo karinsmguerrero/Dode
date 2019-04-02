@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Dode remote control</string>
+    <string name="btn_start">Iniciar</string>
+    <string name="txt_status">Status: </string>
 </resources>

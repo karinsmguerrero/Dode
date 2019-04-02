@@ -77,7 +77,7 @@ int TEN[5] = {6,2,9,7,11};
 int ELEVEN[5] = {6,10,7,12,5};
 int TWELVE[5] = {11,7,8,4,5};
 
-int currentface = 1;
+int current_face = 1;
 
 int LED_ONE = 2;
 int LED_TWO = 3;
@@ -204,42 +204,42 @@ bool publishAvailabilityStatus(bool available) {
 }
 
 void AF(){
-  if(currentFace == 1){
-    currentFace = LED_ONE[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 2){
-    currentFace = LED_TWO[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 3){
-    currentFace = LED_THREE[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 4){
-    currentFace = LED_FOUR[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 5){
-    currentFace = LED_FIVE[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 6){
-    currentFace = LED_SIX[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 7){
-    currentFace = LED_SEVEN[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 8){
-    currentFace = LED_EIGHT[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 9){
-    currentFace = LED_NINE[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 10){
-    currentFace = LED_TEN[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 11){
-    currentFace = LED_ELEVEN[1];
-    //Move_motor(currentFace);
-  }else if(currentFace == 12){
-    currentFace = LED_TWELVE[1];
-    //Move_motor(currentFace);
+  if(current_face == 1){
+    current_face = ONE[1];
+    //Move_motor(current_face);
+  }else if(current_face == 2){
+    current_face = TWO[1];
+    //Move_motor(current_face);
+  }else if(current_face == 3){
+    current_face = THREE[1];
+    //Move_motor(current_face);
+  }else if(current_face == 4){
+    current_face = FOUR[1];
+    //Move_motor(current_face);
+  }else if(current_face == 5){
+    current_face = FIVE[1];
+    //Move_motor(current_face);
+  }else if(current_face == 6){
+    current_face = SIX[1];
+    //Move_motor(current_face);
+  }else if(current_face == 7){
+    current_face = SEVEN[1];
+    //Move_motor(current_face);
+  }else if(current_face == 8){
+    current_face = EIGHT[1];
+    //Move_motor(current_face);
+  }else if(current_face == 9){
+    current_face = NINE[1];
+    //Move_motor(current_face);
+  }else if(current_face == 10){
+    current_face = TEN[1];
+    //Move_motor(current_face);
+  }else if(current_face == 11){
+    current_face = ELEVEN[1];
+    //Move_motor(current_face);
+  }else if(current_face == 12){
+    current_face = TWELVE[1];
+    //Move_motor(current_face);
   }
     Serial.println("Move AF");/*
      digitalWrite(LED_ONE, HIGH);   // turn the LED on (HIGH is the voltage level)
@@ -255,42 +255,42 @@ void F_MOVE(){
 }
 
 void DFA(){
-    if(currentFace == 1){
-    currentFace = LED_ONE[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 2){
-    currentFace = LED_TWO[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 3){
-    currentFace = LED_THREE[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 4){
-    currentFace = LED_FOUR[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 5){
-    currentFace = LED_FIVE[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 6){
-    currentFace = LED_SIX[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 7){
-    currentFace = LED_SEVEN[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 8){
-    currentFace = LED_EIGHT[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 9){
-    currentFace = LED_NINE[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 10){
-    currentFace = LED_TEN[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 11){
-    currentFace = LED_ELEVEN[0];
-    //Move_motor(currentFace);
-  }else if(currentFace == 12){
-    currentFace = LED_TWELVE[0];
-    //Move_motor(currentFace);
+    if(current_face == 1){
+    current_face = ONE[0];
+    //Move_motor(current_face);
+  }else if(current_face == 2){
+    current_face = TWO[0];
+    //Move_motor(current_face);
+  }else if(current_face == 3){
+    current_face = THREE[0];
+    //Move_motor(current_face);
+  }else if(current_face == 4){
+    current_face = FOUR[0];
+    //Move_motor(current_face);
+  }else if(current_face == 5){
+    current_face = FIVE[0];
+    //Move_motor(current_face);
+  }else if(current_face == 6){
+    current_face = SIX[0];
+    //Move_motor(current_face);
+  }else if(current_face == 7){
+    current_face = SEVEN[0];
+    //Move_motor(current_face);
+  }else if(current_face == 8){
+    current_face = EIGHT[0];
+    //Move_motor(current_face);
+  }else if(current_face == 9){
+    current_face = NINE[0];
+    //Move_motor(current_face);
+  }else if(current_face == 10){
+    current_face = TEN[0];
+    //Move_motor(current_face);
+  }else if(current_face == 11){
+    current_face = ELEVEN[0];
+    //Move_motor(current_face);
+  }else if(current_face == 12){
+    current_face = TWELVE[0];
+    //Move_motor(current_face);
   }
     Serial.println("Move DFA");/*
     digitalWrite(LED_THREE, HIGH);   // turn the LED on (HIGH is the voltage level)
@@ -299,42 +299,42 @@ void DFA(){
 }
 
 void IFA(){
-    if(currentFace == 1){
-    currentFace = LED_ONE[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 2){
-    currentFace = LED_TWO[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 3){
-    currentFace = LED_THREE[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 4){
-    currentFace = LED_FOUR[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 5){
-    currentFace = LED_FIVE[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 6){
-    currentFace = LED_SIX[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 7){
-    currentFace = LED_SEVEN[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 8){
-    currentFace = LED_EIGHT[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 9){
-    currentFace = LED_NINE[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 10){
-    currentFace = LED_TEN[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 11){
-    currentFace = LED_ELEVEN[2];
-    //Move_motor(currentFace);
-  }else if(currentFace == 12){
-    currentFace = LED_TWELVE[2];
-    //Move_motor(currentFace);
+    if(current_face == 1){
+    current_face = ONE[2];
+    //Move_motor(current_face);
+  }else if(current_face == 2){
+    current_face = TWO[2];
+    //Move_motor(current_face);
+  }else if(current_face == 3){
+    current_face = THREE[2];
+    //Move_motor(current_face);
+  }else if(current_face == 4){
+    current_face = FOUR[2];
+    //Move_motor(current_face);
+  }else if(current_face == 5){
+    current_face = FIVE[2];
+    //Move_motor(current_face);
+  }else if(current_face == 6){
+    current_face = SIX[2];
+    //Move_motor(current_face);
+  }else if(current_face == 7){
+    current_face = SEVEN[2];
+    //Move_motor(current_face);
+  }else if(current_face == 8){
+    current_face = EIGHT[2];
+    //Move_motor(current_face);
+  }else if(current_face == 9){
+    current_face = NINE[2];
+    //Move_motor(current_face);
+  }else if(current_face == 10){
+    current_face = TEN[2];
+    //Move_motor(current_face);
+  }else if(current_face == 11){
+    current_face = ELEVEN[2];
+    //Move_motor(current_face);
+  }else if(current_face == 12){
+    current_face = TWELVE[2];
+    //Move_motor(current_face);
   }
     Serial.println("Move IFA");/*
     digitalWrite(LED_FOUR, HIGH);   // turn the LED on (HIGH is the voltage level)
@@ -344,42 +344,42 @@ void IFA(){
 }
 
 void DFB(){
-    if(currentFace == 1){
-    currentFace = LED_ONE[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 2){
-    currentFace = LED_TWO[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 3){
-    currentFace = LED_THREE[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 4){
-    currentFace = LED_FOUR[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 5){
-    currentFace = LED_FIVE[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 6){
-    currentFace = LED_SIX[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 7){
-    currentFace = LED_SEVEN[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 8){
-    currentFace = LED_EIGHT[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 9){
-    currentFace = LED_NINE[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 10){
-    currentFace = LED_TEN[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 11){
-    currentFace = LED_ELEVEN[4];
-    //Move_motor(currentFace);
-  }else if(currentFace == 12){
-    currentFace = LED_TWELVE[4];
-    //Move_motor(currentFace);
+    if(current_face == 1){
+    current_face = ONE[4];
+    //Move_motor(current_face);
+  }else if(current_face == 2){
+    current_face = TWO[4];
+    //Move_motor(current_face);
+  }else if(current_face == 3){
+    current_face = THREE[4];
+    //Move_motor(current_face);
+  }else if(current_face == 4){
+    current_face = FOUR[4];
+    //Move_motor(current_face);
+  }else if(current_face == 5){
+    current_face = FIVE[4];
+    //Move_motor(current_face);
+  }else if(current_face == 6){
+    current_face = SIX[4];
+    //Move_motor(current_face);
+  }else if(current_face == 7){
+    current_face = SEVEN[4];
+    //Move_motor(current_face);
+  }else if(current_face == 8){
+    current_face = EIGHT[4];
+    //Move_motor(current_face);
+  }else if(current_face == 9){
+    current_face = NINE[4];
+    //Move_motor(current_face);
+  }else if(current_face == 10){
+    current_face = TEN[4];
+    //Move_motor(current_face);
+  }else if(current_face == 11){
+    current_face = ELEVEN[4];
+    //Move_motor(current_face);
+  }else if(current_face == 12){
+    current_face = TWELVE[4];
+    //Move_motor(current_face);
   }
     Serial.println("Move DFB");/*
     digitalWrite(LED_FIVE, HIGH);   // turn the LED on (HIGH is the voltage level)
@@ -388,42 +388,42 @@ void DFB(){
 }
 
 void IFB(){
-    if(currentFace == 1){
-    currentFace = LED_ONE[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 2){
-    currentFace = LED_TWO[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 3){
-    currentFace = LED_THREE[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 4){
-    currentFace = LED_FOUR[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 5){
-    currentFace = LED_FIVE[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 6){
-    currentFace = LED_SIX[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 7){
-    currentFace = LED_SEVEN[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 8){
-    currentFace = LED_EIGHT[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 9){
-    currentFace = LED_NINE[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 10){
-    currentFace = LED_TEN[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 11){
-    currentFace = LED_ELEVEN[3];
-    //Move_motor(currentFace);
-  }else if(currentFace == 12){
-    currentFace = LED_TWELVE[3];
-    //Move_motor(currentFace);
+    if(current_face == 1){
+    current_face = ONE[3];
+    //Move_motor(current_face);
+  }else if(current_face == 2){
+    current_face = TWO[3];
+    //Move_motor(current_face);
+  }else if(current_face == 3){
+    current_face = THREE[3];
+    //Move_motor(current_face);
+  }else if(current_face == 4){
+    current_face = FOUR[3];
+    //Move_motor(current_face);
+  }else if(current_face == 5){
+    current_face = FIVE[3];
+    //Move_motor(current_face);
+  }else if(current_face == 6){
+    current_face = SIX[3];
+    //Move_motor(current_face);
+  }else if(current_face == 7){
+    current_face = SEVEN[3];
+    //Move_motor(current_face);
+  }else if(current_face == 8){
+    current_face = EIGHT[3];
+    //Move_motor(current_face);
+  }else if(current_face == 9){
+    current_face = NINE[3];
+    //Move_motor(current_face);
+  }else if(current_face == 10){
+    current_face = TEN[3];
+    //Move_motor(current_face);
+  }else if(current_face == 11){
+    current_face = ELEVEN[3];
+    //Move_motor(current_face);
+  }else if(current_face == 12){
+    current_face = TWELVE[3];
+    //Move_motor(current_face);
   }
     Serial.println("Move IFB");/*
     digitalWrite(LED_SIX, HIGH);   // turn the LED on (HIGH is the voltage level)

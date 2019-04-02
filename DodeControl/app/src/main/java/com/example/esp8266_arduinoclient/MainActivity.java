@@ -21,7 +21,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MainActivity extends AppCompatActivity {
 
     MqttAndroidClient client;
-    TextView subText;
+    TextView subText, txt_Execution;
 
     static String MQTT_broker = "tcp://io.adafruit.com:1883";
     static String IO_USERNAME = "karinamg";
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         subText = (TextView)findViewById(R.id.SubTExt);
+        txt_Execution = (TextView)findViewById(R.id.txt_execution);
 
         String clientId = MqttClient.generateClientId();
         client = new MqttAndroidClient(this.getApplicationContext(), MQTT_broker, clientId);
@@ -71,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
+                if(topic.startsWith(IO_TOPIC_START)){
+                    txt_Execution.setText(new String(message.getPayload()));
+                }
                 subText.setText(new String(message.getPayload()));
             }
 
@@ -94,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
     public void setSubscription(){
         try{
             client.subscribe(IO_TOPIC_STATUS, 0);
+        }catch (MqttException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setExecution(){
+        try{
+            client.subscribe(IO_TOPIC_START, 0);
         }catch (MqttException e){
             e.printStackTrace();
         }
