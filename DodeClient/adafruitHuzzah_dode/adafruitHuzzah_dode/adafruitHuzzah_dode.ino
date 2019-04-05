@@ -115,6 +115,8 @@ int MOTOR_TEN = 9;
 int MOTOR_ELEVEN = 10;
 int MOTOR_TWELVE = 11;
 
+bool executing = false;
+
 
 void setup() {
      Serial.begin(115200);
@@ -135,20 +137,6 @@ void setup() {
   // Setup MQTT subscription for feed.
   mqtt.subscribe(&tTest);
   mqtt.subscribe(&tCommands);
-    /*
-    pinMode(LED_ONE, OUTPUT);
-     pinMode(LED_TWO, OUTPUT);
-      pinMode(LED_THREE, OUTPUT);
-       pinMode(LED_FOUR, OUTPUT);
-        pinMode(LED_FIVE, OUTPUT);
-         pinMode(LED_SIX, OUTPUT);
-          pinMode(LED_SEVEN, OUTPUT);
-           pinMode(LED_EIGHT, OUTPUT);
-            pinMode(LED_NINE, OUTPUT);
-             pinMode(LED_TEN, OUTPUT);
-              pinMode(LED_ELEVEN, OUTPUT);
-               pinMode(LED_TWELVE, OUTPUT);
-               */
 }
 
 void loop() {
@@ -265,7 +253,7 @@ void AF(){
      digitalWrite(LED_ONE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_ONE, LOW); */
-     move_motor(current_face - 1);
+     move_Angle(current_face - 1, 90);
 }
 
 void F_MOVE(){
@@ -273,7 +261,7 @@ void F_MOVE(){
     digitalWrite(LED_TWO, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_TWO, LOW); */
-     move_motor(current_face - 1);
+     move_Angle(current_face - 1, 90);
 }
 
 void DFA(){
@@ -282,7 +270,7 @@ void DFA(){
     digitalWrite(LED_THREE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_THREE, LOW); */
-     move_motor(current_face - 1);
+     move_Angle(current_face - 1, 90);
 }
 
 void IFA(){
@@ -291,7 +279,7 @@ void IFA(){
     digitalWrite(LED_FOUR, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_FOUR, LOW); */
-     move_motor(current_face - 1);
+     move_Angle(current_face - 1, 90);
 
 }
 
@@ -301,7 +289,7 @@ void DFB(){
     digitalWrite(LED_FIVE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_FIVE, LOW); */
-     move_motor(current_face - 1);
+     move_Angle(current_face - 1, 90);
 }
 
 void IFB(){
@@ -310,7 +298,7 @@ void IFB(){
     digitalWrite(LED_SIX, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_SIX, LOW); */
-     move_motor(current_face - 1);
+     move_Angle(current_face - 1, 90);
 }
 
 /*--------------------
@@ -322,66 +310,53 @@ void A(){
   AF();
   IFA();
   AF();
-    Serial.println("Move A");/*
-    digitalWrite(LED_SEVEN, HIGH);   // turn the LED on (HIGH is the voltage level)
-     delay(1000);
-     digitalWrite(LED_SEVEN, LOW); */
+    Serial.println("Move A");
 }
 //AF->IFA
 void DAA(){
   AF();
   IFA();
-    Serial.println("Move DAA");/*
-    digitalWrite(LED_EIGHT, HIGH);   // turn the LED on (HIGH is the voltage level)
-     delay(1000);
-     digitalWrite(LED_EIGHT, LOW); */
+    Serial.println("Move DAA");
 }
 //AF->DFA
 void IAA(){
   AF();
   DFA();
-    Serial.println("Move IAA");/*
-    digitalWrite(LED_NINE, HIGH);   // turn the LED on (HIGH is the voltage level)
-     delay(1000);
-     digitalWrite(LED_NINE, LOW); */
+    Serial.println("Move IAA");
 }
 //AF->IFA->IFA
 void DAB(){
   AF();
   IFA();
   IFA();
-    Serial.println("Move DAB");/*
-    digitalWrite(LED_TEN, HIGH);   // turn the LED on (HIGH is the voltage level)
-     delay(1000);
-     digitalWrite(LED_TEN, LOW); */
+    Serial.println("Move DAB");
 }
 //DFB->DFB
 void IAB(){
   DFB();
   DFB();
-    Serial.println("Move IAB");/*
-    digitalWrite(LED_ELEVEN, HIGH);   // turn the LED on (HIGH is the voltage level)
-     delay(1000);
-     digitalWrite(LED_ELEVEN, LOW); */
+    Serial.println("Move IAB");
 }
 //DFB->AF
 void AA(){
   DFB();
   AF();
-    Serial.println("Move AA");/*
-    digitalWrite(LED_TWELVE, HIGH);   // turn the LED on (HIGH is the voltage level)
-     delay(1000);
-     digitalWrite(LED_ONE, LOW); */
+    Serial.println("Move AA");
 }
 
 
 
-int receiveCommand() {
-    int clientSt = 99;
+void receiveCommand() {
     // this is our 'wait for incoming subscription packets' busy subloop
     Adafruit_MQTT_Subscribe *subscription;
     while ((subscription = mqtt.readSubscription(10))) {
         if(subscription == &tCommands){
+
+              if(executing == false){
+                executing = true;
+                publishAvailabilityStatus(executing);
+              }
+              
             Serial.print(F("Got: "));
             Serial.println((char*)tCommands.lastread);
             
@@ -438,11 +413,14 @@ int receiveCommand() {
                 }
                 Serial.print("Finish reading command");
             }
+
+            if(executing == true){
+                executing = false;
+                publishAvailabilityStatus(executing);
+              }
         }
     }
 
-    //publishClientStatus(true);
-    return clientSt;
 }
 
 void move_motor(int channel){
@@ -459,10 +437,10 @@ void move_motor(int channel){
   delay(1000);
 }
 //prueba con angulos
-void movetAngle(uint8_t channel, int ang) {
+void move_Angle(uint8_t channel, int ang) {
   int duty;
   duty=map(ang,0,180,pos0, pos180);
-  servos.setPWM(channel, 0, duty);  
+  pwm.setPWM(channel, 0, duty);  
 }
 
 /* Referencias
