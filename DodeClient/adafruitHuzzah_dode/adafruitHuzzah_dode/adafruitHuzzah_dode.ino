@@ -24,10 +24,9 @@
 
 // definition of credentials and feeds
 
-#define ssid            "Martinez"
-#define password        "jimmyantonio"
-/*#define ssid            "Karina"
-#define password        "karina98"*/
+
+#define ssid            "Karina"
+#define password        "karina98"
 #define SERVER          "io.adafruit.com"
 #define SERVERPORT      1883
 #define MQTT_USERNAME   "karinamg"
@@ -41,6 +40,8 @@
 
 // called this way, it uses the default address 0x40
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
+
+Adafruit_PWMServoDriver pwmLED = Adafruit_PWMServoDriver(0x41);
 
 // our servo # counter
 uint8_t servonum = 12;
@@ -58,6 +59,10 @@ Adafruit_MQTT_Client mqtt(&client, SERVER, SERVERPORT, MQTT_USERNAME, MQTT_KEY);
 // Setup a feed called 'test' for subscribing to changes.
 const char TEST_FEED[] PROGMEM = USERNAME  PREAMBLE  "test";
 Adafruit_MQTT_Subscribe tTest = Adafruit_MQTT_Subscribe(&mqtt, TEST_FEED);
+
+// Setup a feed called 'test' for subscribing to changes.
+const char star_FEED[] PROGMEM = USERNAME  PREAMBLE  "start";
+Adafruit_MQTT_Subscribe tStart = Adafruit_MQTT_Subscribe(&mqtt, star_FEED);
 
 // Setup a feed called 'commands' for subscribing to changes.
 const char COMMANDS_FEED[] PROGMEM = USERNAME  PREAMBLE  "commands";
@@ -87,6 +92,8 @@ int TEN[5] = {6,2,9,7,11};
 int ELEVEN[5] = {6,10,7,12,5};
 int TWELVE[5] = {11,7,8,4,5};
 
+int MOVEMENTS[12] = {11,10,6,1,3,8,2,9,7,12,4,5};
+
 int current_face = 1;
 
 int LED_ONE = 2;
@@ -102,20 +109,22 @@ int LED_TEN = 11;
 int LED_ELEVEN = 12;
 int LED_TWELVE = 13;
 
-int MOTOR_ONE = 0;
-int MOTOR_TWO = 1;
-int MOTOR_THREE = 2;
-int MOTOR_FOUR = 3;
+int MOTOR_ONE = 1;
+int MOTOR_TWO = 2;
+int MOTOR_THREE = 3;
+int MOTOR_FOUR = 4;
 int MOTOR_FIVE = 4;
-int MOTOR_SIX = 5;
-int MOTOR_SEVEN = 6;
-int MOTOR_EIGHT = 7;
-int MOTOR_NINE = 8;
-int MOTOR_TEN = 9;
-int MOTOR_ELEVEN = 10;
-int MOTOR_TWELVE = 11;
+int MOTOR_SIX = 6;
+int MOTOR_SEVEN = 7;
+int MOTOR_EIGHT = 8;
+int MOTOR_NINE = 9;
+int MOTOR_TEN = 10;
+int MOTOR_ELEVEN = 11;
+int MOTOR_TWELVE = 12;
 
 bool executing = false;
+
+char* commands;
 
 
 void setup() {
@@ -136,6 +145,7 @@ void setup() {
 
   // Setup MQTT subscription for feed.
   mqtt.subscribe(&tTest);
+  mqtt.subscribe(&tStart);
   mqtt.subscribe(&tCommands);
 }
 
@@ -145,8 +155,17 @@ void loop() {
     // connection and automatically reconnect when disconnected).  See the MQTT_connect
     // function definition further below.
     connectMQTT();
-    receiveCommand();
 
+    Adafruit_MQTT_Subscribe *subscription;
+    while ((subscription = mqtt.readSubscription(10))) {
+        if(subscription == &tStart){
+          for(int i = 0; i < 12; i++){
+            current_face = MOVEMENTS[i];
+            move_motor(MOVEMENTS[i]);
+            delay(1000);
+          }
+    }
+    }
 }
 
 void connectWLAN() {
@@ -246,6 +265,7 @@ void newPosition(int index){
     current_face = TWELVE[index];
   }
 }
+
 void AF(){
     newPosition(1);
     Serial.println("Move AF");
@@ -253,7 +273,7 @@ void AF(){
      digitalWrite(LED_ONE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_ONE, LOW); */
-     move_Angle(current_face - 1, 90);
+     move_motor(current_face - 1);
 }
 
 void F_MOVE(){
@@ -261,7 +281,7 @@ void F_MOVE(){
     digitalWrite(LED_TWO, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_TWO, LOW); */
-     move_Angle(current_face - 1, 90);
+     move_motor(current_face - 1);
 }
 
 void DFA(){
@@ -270,7 +290,7 @@ void DFA(){
     digitalWrite(LED_THREE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_THREE, LOW); */
-     move_Angle(current_face - 1, 90);
+     move_motor(current_face - 1);
 }
 
 void IFA(){
@@ -279,7 +299,7 @@ void IFA(){
     digitalWrite(LED_FOUR, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_FOUR, LOW); */
-     move_Angle(current_face - 1, 90);
+     move_motor(current_face - 1);
 
 }
 
@@ -289,7 +309,7 @@ void DFB(){
     digitalWrite(LED_FIVE, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_FIVE, LOW); */
-     move_Angle(current_face - 1, 90);
+     move_motor(current_face - 1);
 }
 
 void IFB(){
@@ -298,7 +318,7 @@ void IFB(){
     digitalWrite(LED_SIX, HIGH);   // turn the LED on (HIGH is the voltage level)
      delay(1000);
      digitalWrite(LED_SIX, LOW); */
-     move_Angle(current_face - 1, 90);
+     move_motor(current_face - 1);
 }
 
 /*--------------------
@@ -345,13 +365,15 @@ void AA(){
 }
 
 
-
 void receiveCommand() {
     // this is our 'wait for incoming subscription packets' busy subloop
     Adafruit_MQTT_Subscribe *subscription;
     while ((subscription = mqtt.readSubscription(10))) {
+      if(subscription == &tCommands){
+        commands = (char*)tCommands.lastread;
+      }
         if(subscription == &tCommands){
-
+          Serial.print(F("Got statr"));
               if(executing == false){
                 executing = true;
                 publishAvailabilityStatus(executing);
@@ -362,7 +384,6 @@ void receiveCommand() {
             
             publishClientStatus(false);
 
-            char* commands = (char*)tCommands.lastread;
             int i = 0;
             std::string* commmand = new std::string(commands);
             const char * c = commmand->c_str();
@@ -424,23 +445,116 @@ void receiveCommand() {
 }
 
 void move_motor(int channel){
-   for (int duty = pos0; duty < pos180; duty=duty+10) {
-      pwm.setPWM(channel,0,duty);
-       
-  }
-  delay(1000);
-  for (int duty = pos180; duty > pos0; duty=duty-10) {
-
-      pwm.setPWM(channel,0,duty);
-    
-  }
-  delay(1000);
+    move_Angle(channel, 20);
+    delay(900);
+    move_Angle(channel, 180);
+    delay(900);
+    move_Angle(channel, 20);
+    delay(800);
 }
 //prueba con angulos
 void move_Angle(uint8_t channel, int ang) {
   int duty;
   duty=map(ang,0,180,pos0, pos180);
   pwm.setPWM(channel, 0, duty);  
+}
+
+void light(int channel, bool state){
+  if(true){
+  pwmLED.setPWM(channel, 4096, 0);   
+  }
+  else{
+    pwmLED.setPWM(channel, 0, 4096);
+  }
+    
+}
+
+void led_secuence(){
+  if(current_face == 1){
+    for(int i = 0; i < 6; i++){
+      light(ONE[i], true);
+      delay(100);
+      light(ONE[i], false);
+      delay(100);
+    }
+  }else if(current_face == 2){
+    for(int i = 0; i < 6; i++){
+      light(TWO[i], true);
+      delay(100);
+      light(TWO[i], false);
+      delay(100);
+    }
+  }else if(current_face == 3){
+    for(int i = 0; i < 6; i++){
+      light(THREE[i], true);
+      delay(100);
+      light(THREE[i], false);
+      delay(100);
+    }
+  }else if(current_face == 4){
+    for(int i = 0; i < 6; i++){
+      light(FOUR[i], true);
+      delay(100);
+      light(FOUR[i], false);
+      delay(100);
+    }
+  }else if(current_face == 5){
+    for(int i = 0; i < 6; i++){
+      light(FIVE[i], true);
+      delay(100);
+      light(FIVE[i], false);
+      delay(100);
+    }
+  }else if(current_face == 6){
+    for(int i = 0; i < 6; i++){
+      light(SIX[i], true);
+      delay(100);
+      light(SIX[i], false);
+      delay(100);
+    }
+  }else if(current_face == 7){
+    for(int i = 0; i < 6; i++){
+      light(SEVEN[i], true);
+      delay(100);
+      light(SEVEN[i], false);
+      delay(100);
+    }
+  }else if(current_face == 8){
+    for(int i = 0; i < 6; i++){
+      light(EIGHT[i], true);
+      delay(100);
+      light(EIGHT[i], false);
+      delay(100);
+    }
+  }else if(current_face == 9){
+    for(int i = 0; i < 6; i++){
+      light(NINE[i], true);
+      delay(100);
+      light(NINE[i], false);
+      delay(100);
+    }
+  }else if(current_face == 10){
+    for(int i = 0; i < 6; i++){
+      light(TEN[i], true);
+      delay(100);
+      light(TEN[i], false);
+      delay(100);
+    }
+  }else if(current_face == 11){
+    for(int i = 0; i < 6; i++){
+      light(ELEVEN[i], true);
+      delay(100);
+      light(ELEVEN[i], false);
+      delay(100);
+    }
+  }else if(current_face == 12){
+    for(int i = 0; i < 6; i++){
+      light(TWELVE[i], true);
+      delay(100);
+      light(TWELVE[i], false);
+      delay(100);
+    }
+  }
 }
 
 /* Referencias
